@@ -2,60 +2,25 @@
 import { ref, watch } from "vue";
 
 const props = defineProps(["tab"]);
+
+const videoList = ref([
+  "https://www.youtube.com/embed/PvztJPAb7jM",
+  "https://www.youtube.com/embed/ZXBa-5wwcfc",
+  "https://www.youtube.com/embed/dsclgPv32fU",
+  "https://www.youtube.com/embed/X8OBHQUQoTM",
+  "https://www.youtube.com/embed/jD4IISOja6Q",
+  "https://www.youtube.com/embed/NEMsPKkchJ0",
+]);
 </script>
 
 <template>
   <Transition>
     <div v-if="tab === 'youtube'" class="youtube-wrapper">
       <div class="video-grid" :class="{ gridanimation: tab === 'youtube' }">
-        <div class="video">
-          <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/PvztJPAb7jM"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video">
-            <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/ZXBa-5wwcfc"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video">
-            <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/dsclgPv32fU"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video">
-            <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/X8OBHQUQoTM"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video">
-            <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/jD4IISOja6Q"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div class="video">
-            <iframe class="video-iframe"
-            src="https://www.youtube.com/embed/NEMsPKkchJ0"
+        <div class="video" v-for="video in videoList">
+          <iframe
+            class="video-iframe"
+            :src="video"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -154,7 +119,6 @@ const props = defineProps(["tab"]);
   gap: 1rem;
 }
 .video {
-  
 }
 
 .video:nth-child(1) {
@@ -168,7 +132,7 @@ const props = defineProps(["tab"]);
 }
 
 .video-iframe {
-    width:100%;
-    height:100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

@@ -1,6 +1,7 @@
 <script setup>
 import Hero from "./components/Hero.vue";
 import Youtube from "./components/Youtube.vue";
+import Discounts from "./components/Discounts.vue";
 import Navigation from "./components/Navigation.vue";
 import { ref } from "vue";
 
@@ -45,18 +46,33 @@ function changetab(newtab) {
     </div> -->
     <Navigation @tabchange="changetab" />
     <div>
-      <div class="main" :class="{ tableave: tab !== 'home', tabenter: tab === 'home'} ">
-        <Hero :tab="tab"/>
+      <div
+        class="main"
+        :class="{ tableave: tab !== 'home', tabenter: tab === 'home' }"
+      >
+        <Hero :tab="tab" />
       </div>
-      <div class="main tab-hidden" :class="{ tableave: tab !== 'youtube', tabenter: tab === 'youtube'} ">
-        <Youtube :tab="tab"/>
+      <div
+        class="main tab-hidden"
+        :class="{ tableave: tab !== 'youtube', tabenter: tab === 'youtube' }"
+      >
+        <Youtube :tab="tab" />
+      </div>
+      <div
+        class="main tab-hidden"
+        :class="{
+          tableave: tab !== 'discounts',
+          tabenter: tab === 'discounts',
+        }"
+      >
+        <Discounts :tab="tab" />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.main  {
+.main {
   position: absolute;
   top: 4rem;
   left: 0rem;
@@ -126,7 +142,7 @@ function changetab(newtab) {
   top: 50%;
   translate: -50% -50%;
   z-index: -1;
- /* backdrop-filter: blur(5.5rem);*/
+  /* backdrop-filter: blur(5.5rem);*/
 }
 
 /*
